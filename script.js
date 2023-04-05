@@ -1,6 +1,8 @@
  // Crie uma instância da fila
  let minhaFila = new Fila(10);
 
+ let i=0;
+
  // Função para adicionar um elemento à fila
  function adicionarElemento() {
     const novoNome = document.getElementById("txtNovoNome");
@@ -19,16 +21,18 @@
       novoNome.value = "";
       novoCpf.value = "";
       console.log(minhaFila.toString());
+      i++;
       mostrarFila();
 
    }//fim adicionar na fila
-   else{
+   else{ 
       alert("Fila cheia!");
     }
    }//fim validação do campo
    
     //set atributos do atendimento no objeto a partir dos inputs e funções
     // adicionar na fila e mostrar na tela
+
  }
 //--------------------------------------------------------------------------------------------
  // Função para remover o primeiro elemento da fila
@@ -39,29 +43,30 @@
     }else{
       let remover = minhaFila.dequeue();
       console.log(minhaFila.toString());
-      mostrarMensagemRemocao(remover);      
+      mostrarMensagemRemocao(remover);   
+      i--;   
       mostrarFila();
    }
     // mostrar dados da pessoa atendida utilizando a funcao mostrarMensagemRemocao
 }    
  //--------------------------------------------------------------------------------
  function buscarCpf() {
-    let posicao = 1;
+    let posicao = 1; 
     let existe = false;
-    const cpf = document.getElementById("txtNovoCpf").value.trim(); // o trim retira os espaços em branco
-    const atendimento = new Atendimento(); // um atendimento falso usado para comparar CPF
+    const cpf = document.getElementById("txtNovoCpf").value.trim(); 
+    const atendimento = new Atendimento();
     atendimento.cpf = cpf;
     
-    for (let item of minhaFila.itens) { // para cada elemento da fila
-        if (item.equals(atendimento)){//testar se item = atendimento
+    for (let item of minhaFila.itens) { 
+        if (item.equals(atendimento)){
             alert("Achou! Posição: " + (posicao));
-            existe = true; // retorna verdadeiro
+            existe = true; 
         }else {
-            posicao++; //aumenta a posicao e vai pro proximo item
+            posicao++; 
         }
     }
 
-    if(!existe) { //caso o atendimento nao seja encontrado ele mostra a mensagem
+    if(!existe) { 
         alert("Atendimento não encontrado! :("); 
     }
    // se nao encontrar mostre mensagem
@@ -72,6 +77,7 @@ function mostrarMensagemRemocao(pessoaAtendida) {
     lblMensagemRemocao.innerHTML ="Próximo a ser atendido(a): " +pessoaAtendida.nome + 
     ",chegou às " + pessoaAtendida.hora + " está sendo atendido às " + obterHoraAtual() + "." ; // print das informacoes
     lblMensagemRemocao.style.display = "block"; 
+
 }
 
 
@@ -80,13 +86,19 @@ function mostrarMensagemRemocao(pessoaAtendida) {
  function mostrarFila() {
    const filaElemento = document.getElementById("listPessoasFila");
    filaElemento.textContent = minhaFila.toString(); 
+
+   if(i==0){
+       pessoasFila.innerHTML = "Ninguem na Fila!";
+   }else{
+      pessoasFila.innerHTML = "Pessoas na fila!"; 
+   }
 }
 //--------------------------------------------------------------------------------------------
  // funcao data
  function obterDataAtual() {
     let dataAtual = new Date();
     let dia = dataAtual.getDate();
-    let mes = dataAtual.getMonth() + 1; // Adiciona 1 porque o mês inicia do zero
+    let mes = dataAtual.getMonth() + 1; 
     let ano = dataAtual.getFullYear();
     // Formata a data como "dd/mm/aaaa"
     let dataFormatada = `${dia.toString().padStart(2, '0')}/${mes.toString().padStart(2, '0')}/${ano}`;

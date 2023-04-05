@@ -7,7 +7,7 @@
     enqueue(elemento){
        if(this.itens.length === this.maximo)
            return false;   
-       this.itens.push(elemento);// insere no final
+       this.itens.push(elemento);
        return true;    
     }
 
