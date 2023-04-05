@@ -2,15 +2,15 @@
 
 <h2> Este projeto consiste em uma página HTML com JavaScript que permite o controle de atendimento. A página apresenta uma lista de clientes em espera, com opções para adicionar, atender e buscar clientes da fila de atendimento.</h2>
 
-<h3 align="center"> 
-Funcionalidades
-</h3>
+### FUNCIONALIDADES
 - [x] Cadastro de Cliente
-- [x] Cadastro de Planos
-- [x] Exclusão de Clientes
-- [x] Alteração de Clientes
-- [x] Listagem de Clientes
-- [x] Tela de Login
+- [x] Atendendimento de Planos
+- [x] Busca de Clientes
+
+<h3 align="center"> 
+Cadastrar CLientes
+</h3>
+Para cadastrar um cliente, basta inserir seu nome e cpf nos campos txt. Após isso o sisteram irá coloca-lo no topo fila e adicionará a hora atual em que ele entrou nela.
 
 <h3 align="center"> 
 Atender CLientes
